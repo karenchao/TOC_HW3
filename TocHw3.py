@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 ####學號:F74002052, 姓名:趙珮雯
-####
+####給四個參數 網址,'鄉鎮市區','土地區段位置或建物區門牌', '交易年月'
+####印出符合這些條件的成交價平均值 (交易年月指判斷年)
 
 import urllib
 import json
@@ -17,8 +18,10 @@ page = urllib.urlopen(url).read()
 #print page
 data = json.loads(page)
 
-money = 0.0
-count = 0
+money = 0.0	#總房屋成交價
+count = 0   #數了幾間房
+
+####parse all of the data
 for item in data:
 	if item[u'鄉鎮市區'] == sys.argv[2].decode('utf-8'):
 		# print item[u'鄉鎮市區']
